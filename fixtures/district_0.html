@@ -1,0 +1,1223 @@
+<!doctype html><html lang="bn"><head>
+	<!-- Basic -->
+	<meta charset="UTF-8"> 
+	<title>বাংলাদেশ কৃষি আবহাওয়া তথ্য সেবা (বামিস)</title> 
+   <!-- <base href="https://www.bamis.gov.bd">-->
+	<!-- Mobile Metas --> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="বাংলাদেশ কৃষি আবহাওয়া তথ্য সেবা (বামিস)">
+	<!-- icon Links -->
+	<link rel="icon" href="https://www.bamis.gov.bd/favicon.png">
+	<!-- Css Links -->
+	<link rel="stylesheet" href="https://www.bamis.gov.bd/assets/css/bootstrap.min.css?v=v2.022056&t=143" /><link rel="stylesheet" href="https://www.bamis.gov.bd/assets/bamis.min.green.css?v=v2.022056&t=143" />	<!-- scripts -->
+	<script>
+		var COMMON_DATA = {};
+			COMMON_DATA['SITE_URL'] ='https://www.bamis.gov.bd';
+			COMMON_DATA['ADMIN_URL'] ='https://www.bamis.gov.bd/administrator';
+			COMMON_DATA['HOME_URL'] ='https://www.bamis.gov.bd';
+			COMMON_DATA['RESOURCE_URL'] ='https://www.bamis.gov.bd/res/public/';
+			COMMON_DATA['TOKEN'] ='';
+			COMMON_DATA['USER'] ='';
+			COMMON_DATA['PAGE_TITLE'] ='বাংলাদেশ কৃষি আবহাওয়া তথ্য সেবা (বামিস)';
+			COMMON_DATA['LANG'] ='BN';
+			COMMON_DATA['LOGIN'] ='';
+	</script>
+    <script> 
+    var CURRENT_LANGUAGE = "BN";
+    var DATA_STORE ={"EN":{},"BN":{}};
+	</script>
+    <script> 
+    function httpGetAsync(theUrl, callback)
+    {
+        console.log("requesting",theUrl);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() { 
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        xmlHttp.send(null);
+    }       
+    function doPOST(url,param,callback) {
+        var formData = new FormData();
+    	
+    	for(k in param){
+    		formData.append(k,param[k]); 
+    	}
+    
+        var xhr = new XMLHttpRequest();  
+        xhr.open("POST", url);  
+        xhr.send(formData); 
+        xhr.onreadystatechange = function() { 
+    		if (this.readyState == 4 && this.status == 200) {
+    		  callback(this.responseText);
+    		}
+        };
+    }
+    </script>
+		<script>
+	function loadPageUrl(url){
+		//window.location = url;
+		loadOnpage(url,$("title").text());
+	}
+	</script>
+	<script src="https://www.bamis.gov.bd/assets/jquery.min.js?v=v160"></script><script src="https://www.bamis.gov.bd/assets/vendor/chartjs/Chart.min.js?v=v160"></script><script src="https://www.bamis.gov.bd/assets/vendor/chartjs/utils.js?v=v160"></script>	
+<style>
+
+table { 
+    width: 100% !important;
+}
+.main_slider.owl-carousel .single_slide h5 {
+    display: none;
+}
+.main_slider.owl-carousel .owl-item img {
+    object-fit: contain;
+}
+ </style> 
+</head>
+<body style="padding: 0;" id="thebody"><!--thebody_start--> 
+
+	<script> var HeaderSliderCurrentImages=[];</script>
+<style>
+    #headerSlideContainer{
+        display:none;
+    } 
+   #Header .container{
+        transition: background 1.5s;
+    } 
+</style>
+<script>
+/*
+**********************************************************************************
+* slide
+**********************************************************************************
+*/
+var HeaderSliderCurrentImage =0;
+var HeaderSliderLoadedImage =0;
+var HeaderSliderTotalImage =0;
+function headerSlider(){
+    //console.log("headerSlider",HeaderSliderCurrentImages);
+    $("#Header").append('<div id="headerSlideContainer"></div>');
+    
+    let theBackground = $("#Header .container").css('background-image').replaceAll("url(","").replaceAll(")","").replaceAll('"',"").replaceAll('"',"").trim();
+    //console.log('theBackground',theBackground);
+    
+    HeaderSliderLoadedImage = 0;
+    $("#headerSlideContainer").append('<img src="'+ theBackground +'" attr="Header Slide 0" />'); 
+    if(HeaderSliderCurrentImages.length > 0){
+        for(var i=0;i <HeaderSliderCurrentImages.length; i++){
+            $("#headerSlideContainer").append('<img src="'+ HeaderSliderCurrentImages[i] +'" attr="Header Slide '+ (i + 1) +'" />'); 
+        }
+    }
+    $("#headerSlideContainer img").each(function(){
+    	 HeaderSliderLoadedImage= HeaderSliderLoadedImage+1;
+    	 $(this).attr("id", "img_height" + HeaderSliderLoadedImage);
+    });
+    HeaderSliderTotalImage=$("#headerSlideContainer img").length; 
+    HeaderSliderCurrentImage=0;
+    //console.log("HeaderSliderTotalImage",HeaderSliderTotalImage);
+	setTimeout(function(){ headerSliderChange(); },5000);
+}
+function headerSliderChange(){ 
+    
+	if(HeaderSliderCurrentImage==HeaderSliderTotalImage){
+		HeaderSliderCurrentImage=1;
+	}else{HeaderSliderCurrentImage=HeaderSliderCurrentImage+1;}
+	
+	let imgSrcs = $("#img_height"+HeaderSliderCurrentImage).attr("src");
+	 
+	 $("#Header .container").attr("style","background: url("+ imgSrcs +")  no-repeat center #0C713E;background-size: cover;");
+	 //$("#Header .container").css("background-size","cover");
+	 
+    //console.log("headerSliderChange",HeaderSliderCurrentImage,imgSrcs);
+		 
+	setTimeout(function(){ headerSliderChange(); },5000);
+}  
+/*
+**********************************************************************************
+* End slide
+**********************************************************************************
+*/
+</script> 
+  
+ 
+	
+
+<section style="position: fixed;left: 0;right: 0;top: 0;height: 5px;z-index:99999;">
+    <div id="loadingStart" class="container" style="padding: 0;">
+        <div id="loadingWrap">
+        	<div id="loadingDiv"></div>
+        </div> 
+    </div> 
+</section>
+<section id="the_header_container"><!--the_header_container_start-->
+<!--
+	<div class="d-none d-sm-block d-xs-block">
+		<img src="https://www.bamis.gov.bd/assets/img/joy.png" style="position: fixed;top: 100px;right: 0; z-index: 999999999; margin: 50px;opacity: 0.8;width: 400px;transition: width 1s, height 1s;" onclick="this.style.width = '1px'">
+	</div>	-->
+	<!-- Header Start Here -->
+	<header id="Header" class="d-none d-sm-block d-md-block d-xs-block"> 
+		<div class="container" style="background: url(https://www.bamis.gov.bd/assets/img/bannernew.jpg) no-repeat center #0C713E;background-size: cover;">
+			<div class="row d-flex justify-content-between align-items-center">
+			<div class="col-auto text-left">
+					<div class="logo gov_logo">
+						<a href="#">
+							<img src="https://www.bamis.gov.bd/assets/img/logo.png" alt="Government Logo Image">
+						</a>
+					</div>
+				</div>	<!--
+				<div class="col-auto text-left">
+					<div class="logo gov_logo" style="width:175px;">
+						<a href="https://www.bamis.gov.bd">
+							<img src="https://www.bamis.gov.bd/assets/img/logo.png" alt="Government Logo Image">
+						</a>
+						<a href="#">
+							<img src="https://www.bamis.gov.bd/assets/img/dae.png" alt="Krishi Somporan Ministry Logo">
+						</a>
+					</div>
+				</div>-->
+				<div class="project_head project_head_BN col-auto text-center" style="/* width: -webkit-fill-available; */display: inline-flex !important;flex-direction: column;justify-content: center;align-items: center;">
+									    
+					<h2 class="project_name">বাংলাদেশ কৃষি আবহাওয়া তথ্য সেবা (বামিস)</h2>
+					<p class="sologan_name">
+						 
+						কৃষি সম্প্রসারণ অধিদপ্তর					</p>
+					
+					
+				</div>
+				<div class="col-auto text-right d-none d-lg-block d-md-none">
+                    <!--
+                    <div style="margin-right: 10px;text-align:center;">
+                        <a href="http://mujib100.gov.bd/"><img src="https://www.bamis.gov.bd/m-logo.png">
+                        <br>
+                        <span style="font-size: 29px;line-height: 78px;color: #ddd;text-shadow: 2px 2px 4px #000;opacity:0;" id="mujib-100">
+                            ...
+                        </span></a>
+                    </div>
+					-->
+					<div class="logo ministry_logo">
+						<a href="#">
+							<img src="https://www.bamis.gov.bd/assets/img/dae.png" alt="Krishi Somporan Ministry Logo">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header><!-- Header End Here -->
+	<!-- "Hamburger menu" / "Bar icon" to toggle the navigation links 
+<a href="javascript:void(0);" class="icon d-none d-sm-block d-xs-block" onclick="myFunction()">
+	<i class="fa fa-bars"></i>
+</a>
+-->
+<style>
+  nav a.blink, a.blink {
+    background: url(https://www.bamis.gov.bd/assets/img/blink2.gif) !important;
+    background-size: 4px !important; 
+    text-shadow: 1px 1px 5px #fff !important;
+    font-weight: bold !important;
+}
+  nav a.blink2, a.blink2 {
+    background: url(https://www.bamis.gov.bd/assets/img/blink.gif) !important;
+    background-size: 4px !important; 
+    text-shadow: 1px 1px 5px #fff !important;
+    font-weight: bold !important;
+}
+  nav a.blink3, a.blink3 {
+    background: url(https://www.bamis.gov.bd/assets/img/blink3.gif) !important;
+    background-size: 4px !important; 
+    text-shadow: 1px 1px 5px #fff !important;
+    font-weight: bold !important;
+}
+    
+    
+</style> 
+<!-- Main Menu Start Here -->
+<section id="Main-menu">
+	<div class="container d-none d-sm-block d-xs-block">
+		<div class="row justify-content-center">
+			<div class="col-auto">
+				<nav>
+					<ul>
+						<li><a href="https://www.bamis.gov.bd/home/"><i class="fa fa-home" aria-hidden="true"></i> হোম</a></li>
+																				
+						<li class="drop_menu" style="display:none !important;">
+							<a href="#">প্রশিক্ষণ / সভা / সেমিনার / কর্মশালা <i class="fa fa-caret-down"></i></a>
+    						      
+							<ul class="dropdown_menu">
+							<li><a href="https://www.bamis.gov.bd/category/training/">প্রশিক্ষণ</a></li>
+    						      <li><a href="https://www.bamis.gov.bd/category/meeting/">সভা</a></li>
+    						      <li><a href="https://www.bamis.gov.bd/category/seminar/">সেমিনার</a></li>
+    						      <li class="drop_menu">
+        							<a href="#">কর্মশালা <i class="fa fa-caret-right"></i></a>
+        							<ul class="dropdown_menu">
+        								<li><a href="https://www.bamis.gov.bd/category/int-workshop/">আন্তর্জাতিক কর্মশালা</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/category/workshop/">জাতীয় কর্মশালা</a></li>  
+        							</ul>
+        						</li> 
+        						</ul>
+						</li>
+						<li><a href="https://www.bamis.gov.bd/page/project-publication/">প্রকাশনা</a></li>
+						<li class="drop_menu"  style="display:none !important;">
+							<a href="#">সংবাদ ও প্রকাশনা <i class="fa fa-caret-down"></i></a>
+							<ul class="dropdown_menu">
+								<li><a href="https://www.bamis.gov.bd/page/project-publication/">প্রকল্পের প্রকাশনা</a></li>
+								<li  style="display:none !important;"><a href="https://www.bamis.gov.bd/page/wb-document/">বিশ্ব ব্যাংক দলিল</a> </li> 
+        						<li class="drop_menu"  style="display:none !important;">
+        							<a href="#">প্রেজেন্টেশন <i class="fa fa-caret-right"></i></a>
+        							<ul class="dropdown_menu">
+        								<li><a href="https://www.bamis.gov.bd/page/officers-training/">কর্মকর্তা প্রশিক্ষণ</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/page/saao-training/">SAAO প্রশিক্ষণ</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/page/farmer-training/">কৃষক প্রশিক্ষণ</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/page/roving-training/">রোভিং সেমিনার</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/page/regional-training/">আঞ্চলিক কর্মশালা</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/page/national-training/">জাতীয় কর্মশালা</a></li> 
+        							</ul>
+        						</li>
+    						      <li class="drop_menu"  style="display:none !important;">
+        							<a href="#">সামাজিক যোগাযোগ  মাধ্যম <i class="fa fa-caret-right"></i></a>
+        							<ul class="dropdown_menu">
+        								<li><a href="https://www.facebook.com/bamis.gov.bd" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a></li> 
+        								<li><a href="https://www.youtube.com/@BangladeshAgro-MeteorologicalI/videos" target="_blank"><i class="fa fa-youtube-square"></i> Youtube</a></li> 
+        							</ul>
+        						</li>
+								<!--<li><a href="https://www.bamis.gov.bd/page/presentation/">প্রেজেন্টেশন</a></li>-->
+								<li  style="display:none !important;"> <a href="https://www.bamis.gov.bd/page/video-page/">ভিডিও</a></li>
+							 	
+								
+    						      <li class="drop_menu"  style="display:none !important;">
+        							<a href="#">প্রকল্পের সংবাদ <i class="fa fa-caret-right"></i></a>
+        							<ul class="dropdown_menu">
+        								<li><a href="https://www.bamis.gov.bd/category/print-media-news/">প্রিন্ট মিডিয়া</a></li> 
+        								<li><a href="https://www.bamis.gov.bd/category/electronic-media-news/">ইলেক্ট্রনিক মিডিয়া</a></li>  
+        							</ul>
+        						</li>
+								
+								
+								<li style="display:none !important;"><a href="https://www.bamis.gov.bd/page/training-manual/">প্রশিক্ষণ নির্দেশিকা</a></li>
+								<li style="display:none !important;"><a href="https://www.bamis.gov.bd/page/others-publication/">অন্যান্য</a></li>
+							</ul>
+						</li>
+						<!--<li><a href="https://www.bamis.gov.bd/page/background/">পটভূমি</a></li>-->
+						<!--<li><a href="https://www.bamis.gov.bd/bulletin/">বুলেটিন</a></li>-->
+						<!--<li><a href="https://www.bamis.gov.bd/raingauge/realtime/">স্বয়ংক্রিয় বৃষ্টিপাত পরিমাপক যন্ত্র</a></li>-->
+						<!--<li><a href="https://www.bamis.gov.bd/page/other-services/">অন্যান্য সংস্থা</a></li>
+						
+						
+		<li>
+			<a href="https://iras.bamis.gov.bd/" target="_blank">স্যাটেলাইট ভিত্তিক সেচ পরামর্শ-আইআরএএস <i class="fa fa-link"></i> </a>
+		</li>
+		<li>
+			<a href="https://cropclassifier-bd.herokuapp.com/" target="_blank">ক্রপ ক্লাসিফিকেশন টুল <i class="fa fa-link"></i> </a>
+		</li>
+						
+						-->
+						<li class="drop_menu">
+							<a href="#">ভূ-উপগ্রহ পর্যবেক্ষণ <i class="fa fa-caret-down"></i></a>
+							<ul class="dropdown_menu"> 
+								<li><a href="https://www.bamis.gov.bd/satellite/product/ndvi/">বিভিন্ন পর্যবেক্ষণ</a></li>
+								<li  style="display:none !important;"><a href="https://iras.bamis.gov.bd/" target="_blank">স্যাটেলাইট ভিত্তিক সেচ পরামর্শ-আইআরএএস</a></li>
+								<!--<li><a href="https://cropclassifier-bd.herokuapp.com/" target="_blank">ক্রপ ক্লাসিফিকেশন টুল</a></li> -->
+							</ul>
+						</li>
+						<!--
+                		<li>
+                			<a href="https://www.bamis.gov.bd/satellite/product/ndvi/">ভূ-উপগ্রহ পর্যবেক্ষণ</a>
+                		</li>--> 
+						<!--<li><a href="https://www.bamis.gov.bd/page/alert/latest">বিশেষ পরামর্শ</a></li>--> <!--class="blink2"--> 
+						
+						<li><a href="https://www.bamis.gov.bd/page/contact-us/">যোগাযোগ</a></li>
+						
+						<li  style="display:none !important;"><a href="https://www.bamis.gov.bd/page/gallery/">গ্যালারি</a></li>
+
+						<li><a href="#" style="padding: 0;"  id="openRegisterModalNowBtn"><span style="display: block;padding: 0 10px;">জরিপ</span></a></li>
+						
+																			<button class="btn lan_btn btn_bamis"><a href="https://www.bamis.gov.bd/en/bulletin/district/current/0/"><i class="fa fa-language" aria-hidden="true"></i>  English</a></button> 
+						 
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>  
+</section><!-- Main Menu End Here -->
+
+<nav class="navbar fixed-top navbar-expand-sm  navbar-dark bg-success  d-block d-sm-none d-xs-none" style="box-shadow: 1px 1px 1px #00000047"> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse">☰</button> 
+    <a class="navbar-brand" href="#">বামিস পোর্টাল</a>
+				<a class="navbar-toggler float-right" href="https://www.bamis.gov.bd/en/bulletin/district/current/0/"><i class="fa fa-language" aria-hidden="true"></i>  EN</a>
+	    <div class="collapse navbar-collapse" id="navbar-collapse" style="overflow: auto;">
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+				<a class="nav-link" href="https://www.bamis.gov.bd/home/">হোম</a>
+            </li> 	
+            <li class="nav-item">
+										<a class="nav-link" href="https://www.bamis.gov.bd/en/bulletin/district/current/0/">English</a>
+			            </li> 	
+            <li class="nav-item dropdown"  style="display:none !important;">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">আমাদের সম্পর্কে</a>
+                <div class="dropdown-menu dropdown-menu-right"> 
+					<a class="dropdown-item" href="https://www.bamis.gov.bd/page/introduction/">পটভূমি</a>
+					<a class="dropdown-item" href="https://www.bamis.gov.bd/page/about-bamis-portal/">বামিস পোর্টাল সম্পর্কে</a><!--
+					<a class="dropdown-item" href="https://www.bamis.gov.bd/page/officers-list/">কর্মকর্তা তালিকা</a> -->
+					<!--<a class="dropdown-item" href="https://www.bamis.gov.bd/page/wb-document/">বিশ্ব ব্যাংক দলিল</a>-->
+					<!--
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">কৃষি আবহাওয়া কারিগরি কমিটি</a>    
+                    <div class="dropdown-menu dropdown-menu-right">  
+						<a class="dropdown-item" href="https://www.bamis.gov.bd/page/technical-committee-national/">জাতীয় কমিটি</a>
+						<a class="dropdown-item" href="https://www.bamis.gov.bd/page/technical-committee-district/">জেলা কমিটি</a>
+						<a class="dropdown-item" href="https://www.bamis.gov.bd/page/technical-committee-upazila/">উপজেলা কমিটি</a> 
+                    </div>-->
+                </div>
+            </li> 
+			<li class="nav-item"><a href="https://www.bamis.gov.bd/page/contact-us/">যোগাযোগ</a></li>
+			   
+            <li class="nav-item dropdown"  style="display:none !important;">
+                <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">পত্র, বরাদ্দ এবং নির্দেশনা</a>
+                <!--<a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">জিওবি ও আরপিএ বরাদ্দ ডাউনলোড</a>-->
+                <div class="dropdown-menu dropdown-menu-right"> 
+                    <!--
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">উপজেলা কৃষি আবহাওয়া বিষয়ক কমিটি</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Upazilla-Agromet-Committee-Meeting-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Upazilla-Agromet-Committee-Meeting-Allocation/">বরাদ্দ</a> 
+                    </div>
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">জেলা কৃষি আবহাওয়া বিষয়ক কমিটির</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/District-Agromet-Committee-Meeting-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/District-Agromet-Committee-Meeting-Allocation/">বরাদ্দ</a> 
+                    </div>
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">কর্মকর্তা প্রশিক্ষণ</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Officers-Training-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Officers-Training-Allocation/">বরাদ্দ</a> 
+                    </div>
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">SAAO প্রশিক্ষণ</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/SAAO-Training-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/SAAO-Training-Allocation/">বরাদ্দ</a> 
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">কৃষক প্রশিক্ষণ</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Farmer-Training-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Farmer-Training-Allocation/">বরাদ্দ</a> 
+                    </div>
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">রোভিং সেমিনার</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Roving-Seminar-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Roving-Seminar-Allocation/">বরাদ্দ</a> 
+                    </div>
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">আঞ্চলিক কর্মশালা</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Regional-Workshop-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Regional-Workshop-Allocation/">বরাদ্দ</a> 
+                    </div>
+                
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">জাতীয় কর্মশালা</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/National-Workshop-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/National-Workshop-Allocation/">বরাদ্দ</a> 
+                    </div>
+                 
+                
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">প্রকল্প কৃষি আবহাওয়া সম্পর্কিত যন্ত্রপাতি সমূহ</a>
+                    <div class="dropdown-menu dropdown-menu-right show"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Project-Agromet-Instruments-Letter/">পত্র</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Project-Agromet-Instruments-Allocation/">বরাদ্দ</a> 
+                    </div>
+                    
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/Instructions/">নির্দেশনা</a> 
+                    -->
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/letter-allotment-instruction-all-region-workshop/">অঞ্চল (সকল) - আঞ্চলিক কর্মশালা</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/letter-allotment-instruction-all-district-roaving-seminer/">জেলা (সকল) - এসএএও প্রশিক্ষণ, রোভিং সেমিনার ও কৃষি আবহাওয়া বিষয়ক কমিটির সভা</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/letter-allotment-instruction-all-upazilla-roaving-seminer/">উপজেলা (সকল) - রোভিং সেমিনার ও কৃষি আবহাওয়া বিষয়ক কমিটির সভা</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/letter-allotment-instruction-254-upazilla-farmer-training/">উপজেলা (২৫৪ টি) - কৃষক প্রশিক্ষণ</a>
+                </div>
+            </li> 
+            
+            <li class="nav-item dropdown"  style="display:none !important;">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">সংবাদ ও প্রকাশনা</a>
+                <div class="dropdown-menu dropdown-menu-right"> 
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/project-publication/">প্রকল্পের প্রকাশনা</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/wb-document/">বিশ্ব ব্যাংক দলিল</a>  
+                    <a class="dropdown-item nav-link dropdown-toggle" href="#"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: #000;padding: .25rem 1.5rem;">প্রেজেন্টেশন</a>    
+                    <div class="dropdown-menu dropdown-menu-right"> 
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/officers-training/">কর্মকর্তা প্রশিক্ষণ</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/saao-training/">SAAO প্রশিক্ষণ</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/farmer-training/">কৃষক প্রশিক্ষণ</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/roving-training/">রোভিং সেমিনার</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/regional-training/">আঞ্চলিক কর্মশালা</a>
+                        <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/national-training/">জাতীয় কর্মশালা</a>
+                    </div>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/video-page/">ভিডিও</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/project-news/">প্রকল্পের সংবাদ</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/training-manual/">প্রশিক্ষণ নির্দেশিকা</a>
+                    <a class="dropdown-item"  href="https://www.bamis.gov.bd/page/others-publication/">অন্যান্য</a>
+                </div>
+            </li> 
+	    	<!--<li class="nav-item"><a href="https://www.bamis.gov.bd/raingauge/realtime/">স্বয়ংক্রিয় বৃষ্টিপাত পরিমাপক যন্ত্র</a></li>-->
+			<!--<li><a href="https://www.bamis.gov.bd/page/other-services/">অন্যান্য সংস্থা</a></li> -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ভূ-উপগ্রহ পর্যবেক্ষণ</a>    
+                <div class="dropdown-menu dropdown-menu-right"> 
+					<a class="dropdown-item" href="https://www.bamis.gov.bd/satellite/product/ndvi/">বিভিন্ন পর্যবেক্ষণ</a>
+					<a class="dropdown-item" href="https://iras.bamis.gov.bd/" target="_blank">স্যাটেলাইট ভিত্তিক সেচ পরামর্শ-আইআরএএস</a>
+					<!--	<a class="dropdown-item" href="https://cropclassifier-bd.herokuapp.com/" target="_blank">ক্রপ ক্লাসিফিকেশন টুল</a> -->
+                </div> 
+    		</li> 
+			<!--<li class="nav-item"><a href="https://www.bamis.gov.bd/page/alert/latest">বিশেষ পরামর্শ</a></li>-->
+			<li class="nav-item"  style="display:none !important;"><a href="https://www.bamis.gov.bd/page/gallery/">গ্যালারি</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="d-block d-sm-none d-xs-none">
+	<div class="container">
+		<div class="row" style="height:40px"></div>
+    </div>
+</section>	<section>
+		<div class="container">
+			<nav aria-label="breadcrumb">
+				 
+			</nav>
+		</div>
+	</section> 
+<!--the_header_container_end-->
+</section>  
+	    
+
+    <style>
+        #modalRegisterForm {
+/*            font-family: Arial, sans-serif; */
+        }
+       #modalRegisterForm .survey-container{  
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px; 
+        }
+     #modalRegisterForm   h2 {
+            text-align: center;
+    font-size: 1.5rem;
+        }
+    #modalRegisterForm    .form-group {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #efefef;
+    border-radius: 10px;
+}
+     #modalRegisterForm   .form-group label {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    #modalRegisterForm    .form-group input,
+    #modalRegisterForm    .form-group select,
+    #modalRegisterForm    .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+  #modalRegisterForm      .form-group input[type="checkbox"],
+   #modalRegisterForm     .form-group input[type="radio"] {
+            width: auto;
+        }
+   #modalRegisterForm     .form-group button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+   #modalRegisterForm     .form-group button:hover {
+            background: #218838;
+        }
+    #modalRegisterForm    .hidden {
+            display: none;
+        }
+    #modalRegisterForm    .language-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    #modalRegisterForm    .reSubmitSurvey,
+    #modalRegisterForm    .thank-you {
+            display: none;
+            text-align: center;
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+   #modalRegisterForm     .feedback {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+    function checkRegistrationForm(){
+    	return false;
+    }
+        function toggleLanguage() {
+            var elements = document.querySelectorAll('[data-en], [data-bn]');
+            var isBangla = document.documentElement.lang === 'bn';
+            elements.forEach(function(element) {
+                element.textContent = isBangla ? element.getAttribute('data-en') : element.getAttribute('data-bn');
+            });
+            document.documentElement.lang = isBangla ? 'en' : 'bn';
+        }
+
+        function toggleFeedbackField() {
+            var satisfactionRadios = document.getElementsByName('satisfaction');
+            var feedbackField = document.getElementById('feedbackField');
+            feedbackField.classList.add('hidden');
+            for (var i = 0; i < satisfactionRadios.length; i++) {
+                if (satisfactionRadios[i].checked && satisfactionRadios[i].value === 'no') {
+                    feedbackField.classList.remove('hidden');
+                    break;
+                }
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+     		   console.log("submitForm");
+            var formData = new FormData(document.getElementById('surveyForm'));
+
+            fetch(COMMON_DATA['SITE_URL'] + '/survey-services/submit-survey.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'success') {
+                    document.getElementById('surveyForm').style.display = 'none';
+                    document.querySelector('.thank-you').style.display = 'block';
+                document.querySelector('.reSubmitSurvey').style.display = 'block';
+                document.querySelector('#feedbackContainer').style.display = 'block';
+			
+                    // Fetch and display feedback
+                    fetchFeedback();
+                } else if (data === 'already_submitted') {
+                    document.getElementById('surveyForm').style.display = 'none';
+                    document.querySelector('.thank-you').textContent = 'You have already submitted the survey.';
+                    document.querySelector('.thank-you').style.display = 'block';
+                document.querySelector('.reSubmitSurvey').style.display = 'block';
+                document.querySelector('#feedbackContainer').style.display = 'block';
+                    fetchFeedback();
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function reSubmitSurvey() {
+                document.getElementById('surveyForm').style.display = 'block';
+                document.querySelector('.thank-you').style.display = 'none';
+                document.querySelector('#feedbackContainer').style.display = 'none';
+                document.querySelector('.reSubmitSurvey').style.display = 'none';
+        }
+
+        function fetchFeedback() {
+     		   console.log("fetchFeedback");
+            fetch(COMMON_DATA['SITE_URL'] +'/survey-services/fetch-survey-feedback.php')
+            .then(response => response.json())
+            .then(data => {
+            	console.log("fetchFeedback")
+                var feedbackContainer = document.getElementById('feedbackContainer');
+                feedbackContainer.innerHTML = '';
+                var feedbackHTML = '<div class="feedback"><h3>Your Feedback:</h3>';
+                feedbackHTML += '<p><strong>Professions:</strong> ' + data.professions + '</p>';
+                feedbackHTML += '<p><strong>Purposes:</strong> ' + data.purposes + '</p>';
+                feedbackHTML += '<p><strong>Satisfaction:</strong> ' + data.satisfaction + '</p>';
+                if (data.satisfaction === 'no') {
+                    feedbackHTML += '<p><strong>Feedback:</strong> ' + data.feedback + '</p>';
+                }
+                feedbackHTML += '<p><strong>Submitted on:</strong> ' + data.timestamp + ' UTC</p>';
+                feedbackHTML += '</div>';
+                feedbackContainer.innerHTML = feedbackHTML;
+                document.querySelector('#feedbackContainer').style.display = 'block';
+                $('#modalRegisterForm').modal('hide');
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+    function checkDoclistener(){ 
+        console.log("checkDoclistener");
+            if (document.cookie.includes('survey_submitted=1')) {
+     		   console.log("cookie survey_submitted");
+            	/*
+                document.getElementById('surveyForm').style.display = 'none';
+                document.querySelector('.thank-you').style.display = 'block';
+                document.querySelector('.reSubmitSurvey').style.display = 'block';
+
+                // Fetch and display feedback
+                fetchFeedback();
+                */
+                $('#modalRegisterForm').modal('hide');
+            }else{
+            	
+     		   console.log("no cookie survey_submitted");
+                $('#modalRegisterForm').modal('show');
+            } 
+        }
+    </script>
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width: 80%;max-width: 500px;">
+    <div class="modal-content" style="transform: scale(0.8);">
+      <div class="modal-header text-center  d-none">
+       <!-- <h4 class="modal-title w-100 font-weight-bold">আপনার তথ্য পূরণ করুন</h4>-->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+          <div class="modal-body">
+
+<div class="survey-container"><!--
+    <div class="language-toggle">
+        <button onclick="toggleLanguage()">English / বাংলা</button>
+    </div>-->
+    <h2 data-en="Provide your opinion on improving Bangladesh Agro-Meteorological Information Service" data-bn="বাংলাদেশ কৃষি আবহাওয়া তথ্য সেবা করার বিষয়ে আপনার মতামত প্রদান করুন">বাংলাদেশ কৃষি আবহাওয়া তথ্য সেবা উন্নত করার বিষয়ে আপনার মতামত প্রদান করুন</h2>
+    <form id="surveyForm" onsubmit="submitForm(event)">
+        <!-- Profession -->
+        <div class="form-group">
+            <label data-en="Your profession?" data-bn="আপনার পেশা?">আপনার পেশা?</label><br>
+            <input type="radio" id="farmer" name="profession[]" value="farmer" required>
+            <label for="farmer" data-en="Farmer" data-bn="কৃষক">কৃষক</label><br>
+            <input type="radio" id="student" name="profession[]" value="student">
+            <label for="student" data-en="Student" data-bn="ছাত্র/ছাত্রী">ছাত্র/ছাত্রী</label><br>
+            <input type="radio" id="researcher" name="profession[]" value="researcher">
+            <label for="researcher" data-en="Researcher" data-bn="গবেষক">গবেষক</label><br>
+            <input type="radio" id="govt-employee" name="profession[]" value="govt-employee">
+            <label for="govt-employee" data-en="Govt and autonomous employee" data-bn="সরকারি / স্বায়ত্তশাসিত প্রতিষ্ঠানের চাকুরিজীবী">সরকারি / স্বায়ত্তশাসিত প্রতিষ্ঠানের চাকুরিজীবী</label><br>
+            <input type="radio" id="autonomous" name="profession[]" value="autonomous">
+            <label for="pvt-employee" data-en="Private Employers " data-bn="বেসরকারি চাকুরিজীবী">বেসরকারি চাকুরিজীবী</label><br>
+            <input type="radio" id="businessman" name="profession[]" value="businessman">
+            <label for="businessman" data-en="Businessman" data-bn="ব্যবসায়ী ">ব্যবসায়ী </label><br>
+            <input type="radio" id="other" name="profession[]" value="other">
+            <label for="other" data-en="Other" data-bn="অন্যান্য">অন্যান্য</label>
+        </div>
+        <!-- Purpose of visiting BAMIS portal -->
+        <div class="form-group">
+            <label data-en="Purpose of visiting BAMIS portal?" data-bn="বামিস পোর্টাল পরিদর্শনের উদ্দেশ্য?">বামিস পোর্টাল পরিদর্শনের উদ্দেশ্য?</label><br>
+            <input type="checkbox" id="agri-advice" name="purpose[]" value="agri-advice">
+            <label for="agri-advice" data-en="Collect agricultural weather advice" data-bn="কৃষি আবহাওয়া পরামর্শ সংগ্রহ">কৃষি আবহাওয়া পরামর্শ সংগ্রহ</label><br>
+            <input type="checkbox" id="weather-river" name="purpose[]" value="weather-river">
+            <label for="weather-river" data-en="Collect weather and river information" data-bn="আবহাওয়া ও নদ-নদী সম্পর্কিত তথ্য  সংগ্রহ">আবহাওয়া ও নদ-নদী সম্পর্কিত তথ্য  সংগ্রহ</label><br>
+            <input type="checkbox" id="crop-calendar" name="purpose[]" value="crop-calendar">
+            <label for="crop-calendar" data-en="Collect crop/pest weather calendar" data-bn="ফসল / বালাই আবহাওয়া পঞ্জিকা থেকে তথ্য  সংগ্রহ">ফসল / বালাই আবহাওয়া পঞ্জিকা থেকে তথ্য  সংগ্রহ</label><br>
+            <input type="checkbox" id="purpose-other" name="purpose[]" value="purpose-other">
+            <label for="purpose-other" data-en="Other" data-bn="অন্যান্য">অন্যান্য</label>
+        </div>
+        <!-- Satisfaction with BAMIS portal -->
+        <div class="form-group">
+            <label data-en="Are you satisfied with BAMIS portal services?" data-bn="আপনি কি বামিস পোর্টাল সেবায় সন্তুষ্ট?">আপনি কি বামিস পোর্টাল সেবায় সন্তুষ্ট?</label><br>
+            <input type="radio" id="yes" name="satisfaction" value="yes" onclick="toggleFeedbackField()">
+            <label for="yes" data-en="Yes" data-bn="হ্যাঁ">হ্যাঁ</label>
+            <input type="radio" id="no" name="satisfaction" value="no" onclick="toggleFeedbackField()">
+            <label for="no" data-en="No" data-bn="না">না</label>
+        </div>
+        <!-- Feedback Field -->
+        <div id="feedbackField" class="form-group hidden">
+            <label for="feedback" data-en="Provide your feedback to improve the service:" data-bn="পরিষেবা উন্নত করার জন্য আপনার মতামত প্রদান করুন:">পরিষেবা উন্নত করার জন্য আপনার মতামত প্রদান করুন:</label>
+            <textarea id="feedback" name="feedback" rows="4"></textarea>
+        </div>
+        <!-- Submit -->
+        <div class="form-group">
+            <button type="submit" data-en="Submit" data-bn="জমা দিন">জমা দিন</button>
+        </div>
+    </form>
+    <div class="thank-you" data-en="Thank you for your submission!" data-bn="আপনার মতামত জমা দেওয়ার জন্য ধন্যবাদ!">আপনার মতামত  জমা দেওয়ার জন্য ধন্যবাদ!
+    </div>
+    <div id="feedbackContainer"></div>
+     <div class="reSubmitSurvey">
+    	<button  data-en="Submit Again" data-bn="পুনরায় জমা দিন" onclick=" reSubmitSurvey()">পুনরায় জমা দিন</button>
+    	</div>
+</div>
+        				 
+          </div> 
+    </div>
+  </div>
+</div>
+    
+<script>
+        function  toggleLanguageEN() {
+            var elements = document.querySelectorAll('[data-en], [data-bn]');
+            elements.forEach(function(element) {
+                element.textContent =  element.getAttribute('data-en');
+            });
+            document.documentElement.lang =   'en';
+        }
+
+    function openSurveyModal(){
+       // $('#modalRegisterForm').modal('show'); 
+    	checkDoclistener();
+        console.log("openSurveyModal",COMMON_DATA['LANG']);
+        if(COMMON_DATA['LANG'] != "BN"){
+        	toggleLanguageEN();
+        console.log("toggleLanguageEN");
+        }
+    }
+    
+    function setButtonOpenRegisterModal(){
+
+    
+		$("#openRegisterModalNowBtn").click(function(){
+			openSurveyModal();
+		});
+    }
+</script>    
+  
+  
+ 
+<style>
+    
+/* override styles when printing */
+@media print {
+    button{
+        visibility:hidden;
+    }
+    #map.main { 
+        height: auto !important; 
+        max-height: none !important; 
+    }
+    #map.main img{
+        max-width:100% !important;
+    }
+}
+</style>
+<section id="the_main_container"><!--content_start-->
+	<!--MainPart_Start-->
+	<!-- Global site tag (gtag.js) - Google Analytics    -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142470333-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-142470333-1');
+	</script>
+
+    <script> 
+    CURRENT_LANGUAGE = "BN";
+	</script> 
+<section id="single_layout">
+	<div class="container">
+				
+		    		        		<div class="row">
+        			<div class="col-md-12 text-center">
+        				<div class="layout_heading">
+        					<h2>জেলা কৃষি আবহাওয়া পরামর্শ সেবা বুলেটিন</h2>
+        				</div>
+        				<hr>
+        			</div> 
+        		</div> 
+    			<div class="row  justify-content-md-center justify-content-center">
+    				<div class="col-md-12">  
+    					<center>
+    						<label for="district">
+    							জেলা 
+    							<select id="district" name="districtid" onchange="loadPageUrl('https://www.bamis.gov.bd/bulletin/district/current/'+ this.value);">
+    								<option value="0">জেলা নির্বাচন করুন</option>
+    								<option value="12" >Bagerhat (বাগেরহাট)</option><option value="64" >Bandarban (বান্দরবান)</option><option value="24" >Barguna (বরগুনা)</option><option value="22" >Barishal (বরিশাল)</option><option value="23" >Bhola (ভোলা)</option><option value="3" >Bogura (বগুড়া)</option><option value="55" >Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option><option value="56" >Chandpur (চাঁদপুর)</option><option value="7" >Chapai Nawabganj (চাঁপাইনবাবগঞ্জ)</option><option value="57" >Chattogram (চট্টগ্রাম)</option><option value="15" >Chuadanga (চুয়াডাঙ্গা)</option><option value="61" >Cox&#39;s Bazar (কক্সবাজার)</option><option value="54" >Cumilla (কুমিল্লা)</option><option value="37" >Dhaka (ঢাকা)</option><option value="26" >Dinajpur (দিনাজপুর)</option><option value="49" >Faridpur (ফরিদপুর)</option><option value="59" >Feni (ফেনী)</option><option value="30" >Gaibandha (গাইবান্ধা)</option><option value="39" >Gazipur (গাজীপুর)</option><option value="48" >Gopalganj (গোপালগঞ্জ)</option><option value="52" >Habiganj (হবিগঞ্জ)</option><option value="33" >Jamalpur (জামালপুর)</option><option value="13" >Jashore (যশোর)</option><option value="19" >Jhalokati (ঝালকাঠি)</option><option value="18" >Jhenaidah (ঝিনাইদহ)</option><option value="4" >Joypurhat (জয়পুরহাট)</option><option value="63" >Khagrachari (খাগড়াছড়ি)</option><option value="65" >Khulna (খুলনা)</option><option value="44" >Kishoreganj (কিশোরগঞ্জ)</option><option value="32" >Kurigram (কুড়িগ্রাম)</option><option value="16" >Kushtia (কুষ্টিয়া)</option><option value="60" >Lakshmipur (লক্ষ্মীপুর)</option><option value="28" >Lalmonirhat (লালমনিরহাট)</option><option value="47" >Madaripur (মাদারীপুর)</option><option value="66" >Magura (মাগুরা)</option><option value="42" >Manikganj (মানিকগঞ্জ)</option><option value="14" >Meherpur (মেহেরপুর)</option><option value="51" >Moulvibazar (মৌলভীবাজার)</option><option value="41" >Munshiganj (মুন্সিগঞ্জ)</option><option value="34" >Mymensingh (ময়মনসিংহ)</option><option value="8" >Naogaon (নওগাঁ)</option><option value="10" >Narail (নড়াইল)</option><option value="38" >Narayanganj (নারায়ণগঞ্জ)</option><option value="40" >Narsingdi (নরসিংদী)</option><option value="6" >Natore (নাটোর)</option><option value="35" >Netrokona (নেত্রকোনা)</option><option value="29" >Nilphamari (নীলফামারী)</option><option value="58" >Noakhali (নোয়াখালী)</option><option value="2" >Pabna (পাবনা)</option><option value="25" >Panchagarh (পঞ্চগড়)</option><option value="20" >Patuakhali (পটুয়াখালী)</option><option value="21" >Pirojpur (পিরোজপুর)</option><option value="46" >Rajbari (রাজবাড়ী)</option><option value="5" >Rajshahi (রাজশাহী)</option><option value="62" >Rangamati (রাঙ্গামাটি)</option><option value="31" >Rangpur (রংপুর)</option><option value="9" >Satkhira (সাতক্ষীরা)</option><option value="45" >Shariatpur (শরীয়তপুর)</option><option value="36" >Sherpur (শেরপুর)</option><option value="1" >Sirajganj (সিরাজগঞ্জ)</option><option value="53" >Sunamganj (সুনামগঞ্জ)</option><option value="50" >Sylhet (সিলেট)</option><option value="43" >Tangail (টাঙ্গাইল)</option><option value="27" >Thakurgaon (ঠাকুরগাঁও)</option>    							</select>  
+    						</label>
+    					</center>
+    				</div>
+    			</div> 
+    					<div class="row  justify-content-md-center justify-content-center">
+									<div class="col-md-10">
+						<div class="single_big_btn_menu">
+							<p>অনুগ্রহ করে জেলা নির্বাচন করুন</p>
+						</div>
+					</div> 
+							</div> 
+			</div>
+</section>
+
+<!--content_end-->
+</section>
+<section id="the_footer_container"><!--the_footer_container_start-->
+    <!--MainPart_End-->
+    <!-- Footer Start Here -->
+    <footer id="Footer" class="d-none d-sm-block d-xs-block">
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <p>&copy; ২0২৬ বামিস সমস্ত অধিকার সংরক্ষিত                            <a href="http://webmail.bamis.gov.bd/" style="display: inline;"><i class="fa fa-envelope"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- Footer End Here -->
+    <!-- Back to top button -->
+    <a href="#" id="top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
+    <script src="https://www.bamis.gov.bd/assets/default/bulletin/index.js?v=3611"></script>    <script>
+        function onloadFunctions() {
+            try {
+                documentOnReadyTasks();
+            } catch (e) {
+                console.log(e);
+            }
+            loadFancy();
+            try {
+                headerSlider();setButtonOpenRegisterModal();loadBulletin();            } catch (e) {
+                console.log(e);
+            }
+        };
+    </script>
+        <!--the_footer_container_end-->
+</section>
+<script src="https://www.bamis.gov.bd/assets/bamis.min.js?v=361"></script><script>
+    function loadAutoLoadLink() {
+        $("#loadingStart").slideUp();
+        $("a:not(.fancyimg,.downloads)").click(function() {
+            var link = $(this).attr("href");
+            var currentSrc = window.location.href;
+            if (link.indexOf("#") < 0 && currentSrc != link && link != "#") {
+                if (link.indexOf("bamis.gov.bd") > -1) {
+                    $("#loadingStart").slideDown();
+                    console.log("You are visiting", link);
+                    loadURL(link, function(res) {
+                        //	console.log('res',res);
+                        if (!isEmpty(res)) {
+                            if ((res.indexOf('<!--MainPart_Start-->') > -1) && (res.indexOf('<!--MainPart_End-->') > -1)) {
+                                console.log('res', "sdsdsdsd");
+                                var htmls_wrap = res.split('<!--MainPart_Start-->')[1].split('<!--MainPart_End-->')[0];
+                                var htmls = "";
+                                if (htmls_wrap.indexOf('<section id="Portal_menu">') > -1) {
+                                    htmls = htmls_wrap.split('<section id="Portal_menu">')[1].split('</section>')[0];
+                                }
+                                if (htmls_wrap.indexOf('<section id="single_layout">') > -1) {
+                                    htmls = htmls_wrap.split('<section id="single_layout">')[1].split('</section>')[0];
+                                }
+                                //	console.log('html',"html");
+                                if ($("#single_layout").length > 0) {
+                                    $("#single_layout").html(htmls);
+                                } else if ($("#Portal_menu").length > 0) {
+                                    $("#Portal_menu").html(htmls);
+                                }
+                                $("#loadingStart").slideUp();
+                                window.location = link;
+                                //  window.location = link;
+                            } else {
+                                //  window.location = link;
+                                console.log("Invalid Page Format");
+                            }
+                        } else {
+                            //   window.location = link;
+                            console.log("Invalid Page");
+                        }
+                        // window.location = link;
+                        $("#loadingStart").slideUp();
+                    });
+                    return false;
+                }
+            } else {
+                console.log("You are not visiting", link);
+            }
+        });
+    }
+</script>
+<script>
+    function documentOnReadyTasks() {
+        loadSliderImages();
+        $(window).scroll((function() {
+            $(this).scrollTop() > 5 ? $("#top").fadeIn() : $("#top").fadeOut()
+        }));
+        $("#top").click((function() {
+            return $("body, html").animate({
+                    scrollTop: 0
+                }, 2e3),
+                !1
+        }));
+        $.fn.equalHeights = function() {
+            var t = 0;
+            $(this).each((function() {
+                    t = Math.max($(this).height(), t)
+                })),
+                $(this).each((function() {
+                    $(this).css("min-height", t + "px")
+                }))
+        }
+        $(".equal_slider_weather").equalHeights(),
+            $(".equal_news").equalHeights(),
+            $(".equal_flood_market").equalHeights(),
+            $("select.select-two").each((function() {
+                $(this).select2({
+                    theme: "bootstrap4",
+                    width: "100%",
+                    placeholder: $(this).attr("placeholder"),
+                    allowClear: Boolean($(this).data("allow-clear"))
+                })
+            }));
+        $(".doc_full").click((function() {
+            $(".document").css({
+                    position: "fixed",
+                    width: "100%",
+                    height: "100vh",
+                    "z-index": "9999999",
+                    top: "0",
+                    left: "0"
+                }),
+                $("body").css({
+                    position: "relative",
+                    margin: "0"
+                })
+        }));
+    }
+</script>
+<style>
+    .search_query_with {
+        border: 1px solid #FFC107 !important;
+        background: #ffeed5 !important;
+    }
+    .single_slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: top;
+    }
+    .slideEachImage {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        vertical-align: top;
+        width: -webkit-fill-available;
+    }
+    .single_slide .slideEachImage img{
+        min-height: 400px;        
+    }
+    .single_slide .slideEachImage:first-child{
+        
+    }
+    .single_slide .slideEachImage:first-child img{
+        object-fit: fill !important;        
+    }
+    .single_slide .slideEachImage:last-child img{
+        /* object-fit: none !important; */
+        width: 90%;
+        height:auto;
+    }
+</style>
+<script>
+    function uppercaseWord(str) {
+        if (str.length > 0) {
+            var textstart = str.substring(0, 1).toUpperCase();
+            /*
+            if(str.length > 1){
+                var textend = str.substring(1, str.length).toLowerCase();
+            }else{
+                var textend = "";
+            }
+            */
+            return textstart + str.substring(1, str.length).toLowerCase();
+        } else {
+            return str;
+        }
+    }
+    function ReplaceAllQuerySearch(html_text) {
+        var new_html = html_text;
+        if (search_query_with.indexOf(" ") > -1) {
+            var parts = search_query_with.split(" ");
+            for (var i = 0; i < parts.length; i++) {
+                new_html = new_html.split(parts[i]).join('<span class="search_query_with">' + parts[i] + '</span>');
+                new_html = new_html.split(uppercaseWord(parts[i])).join('<span class="search_query_with">' + uppercaseWord(parts[i]) + '</span>');
+                new_html = new_html.split(parts[i].toUpperCase()).join('<span class="search_query_with">' + parts[i].toUpperCase() + '</span>');
+                new_html = new_html.split(parts[i].toLowerCase()).join('<span class="search_query_with">' + parts[i].toLowerCase() + '</span>');
+            }
+        } else {
+            new_html = new_html.split(search_query_with).join('<span class="search_query_with">' + search_query_with + '</span>');
+            new_html = new_html.split(uppercaseWord(search_query_with)).join('<span class="search_query_with">' + uppercaseWord(search_query_with) + '</span>');
+            new_html = new_html.split(search_query_with.toUpperCase()).join('<span class="search_query_with">' + search_query_with.toUpperCase() + '</span>');
+            new_html = new_html.split(search_query_with.toLowerCase()).join('<span class="search_query_with">' + search_query_with.toLowerCase() + '</span>');
+        }
+        return new_html;
+    }
+    function checkHasSearchQuery() {
+        console.log('search_query_with', search_query_with);
+        $("p,a,h1,h2,h3,h4,h5,h6,td,th, li, ol").each(function() {
+            var html_text = $(this).html();
+            var new_html = ReplaceAllQuerySearch(html_text);
+            $(this).html(new_html);
+        });
+    }
+</script>
+<script>
+    function loadFancy() {
+        $("#loadingStart").slideUp();
+        $("a.fancyimg").fancybox();
+    }
+    var lastLink = window.location + '';
+</script>
+<script>
+    $("#mujib-100-2").hide();
+</script>
+<script>
+    function checkAutoLoadOnpage() {
+        //console.log("checkAutoLoadOnpage");
+        let domain = window.location.protocol + "//" + window.location.hostname;
+        if ($(".layout_heading h2").length > 0) {
+            $("title").html($(".layout_heading h2").text() + " - " + $("h2.project_name").text());
+        }
+        $("nav a:not(.dropdown-toggle), .menu_block a, .single_big_btn_menu a, table a.btn:not(.fancyimg,.downloads),#the_main_container a:not(.fancyimg,.downloads)").click(function() {
+            var nlink = $(this).attr('href');
+            if (
+                nlink != "#" &&
+                nlink.indexOf(domain) > -1 &&
+                nlink.indexOf("bamis.gov.bd/") > -1 &&
+                (nlink.indexOf("https://www.bamis.gov.bd/") > -1 || nlink.indexOf("https://bamis.gov.bd/") > -1)
+            ) {
+                loadOnpage($(this).attr('href'), $(this).text());
+                return false;
+            } else {
+                if (nlink != "#" && link.indexOf("#") < 0) {
+                    window.open($(this).attr('href'), "_blank");
+                }
+                return false;
+                //     console.log("invalid");
+            }
+        });
+    }
+    function loadOnpage(link, label) {
+        console.log("loadOnpage", link, label);
+        $("#the_main_container").css("opacity", "0.2");
+        $("#loadingStart").show();
+        //$("#thebody").css("opacity","0.2");
+        try {
+            $.get(link, function(data, status) {
+                if (data.indexOf("<!--content_start-->") > -1 && data.indexOf("<!--content_end->") > -1 && status == "success") {
+                    $("title").html(label + " - " + $("h2.project_name").text());
+                    var maincontent = data.split('<!--content_start-->')[1].split('<!--content_end-->')[0];
+                    $("#the_main_container").html(maincontent);
+                    $("#the_main_container").css("opacity", "1");
+                    if (data.indexOf("<!--the_header_container_start-->") > -1 && data.indexOf("<!--the_header_container_end->") > -1) {
+                        var the_header_container = data.split('<!--the_header_container_start-->')[1].split('<!--the_header_container_end-->')[0];
+                        $("#the_header_container").html(the_header_container);
+                    }
+                    if (data.indexOf("<!--the_footer_container_start-->") > -1 && data.indexOf("<!--the_footer_container_end->") > -1) {
+                        var the_footer_container = data.split('<!--the_footer_container_start-->')[1].split('<!--the_footer_container_end-->')[0];
+                        $("#the_footer_container").html(the_footer_container);
+                    }
+                    // window.location = link;
+                    /*
+                     if(data.indexOf("<!--thebody_start-->") > -1 && data.indexOf("<!--thebody_end->") > -1){
+                         $("title").html(label);
+                         var thebody = data.split('<!--thebody_start-->')[1].split('<!--thebody_end-->')[0];
+                         $("#thebody").html(thebody);
+                       }
+                       */
+                    if (lastLink != link) {
+                        window.history.pushState({
+                            "html": data,
+                            "pageTitle": label + " - " + $("h2.project_name").text()
+                        }, "", link);
+                        lastLink = link + '';
+                    }
+                    $("#loadingStart").hide();
+                    onloadFunctions();
+                    checkAutoLoadOnpage();
+                } else {
+                    console.log("error");
+                    $("#the_main_container").css("opacity", "1");
+                    window.location = link;
+                }
+            });
+        } catch (err) {
+            console.log("error", err.message);
+            $("#the_main_container").css("opacity", "1");
+            window.location = link;
+        }
+    }
+    //  window.onload = function(){  checkAutoLoadOnpage();  }
+</script>
+<script>
+    function loadSliderImages() {
+        $(".imagesliderspan").each(function() {
+            let altText = $(this).attr("alt");
+            let srcUrl = $(this).attr("src");
+            let imgHtm = '<img src="' + srcUrl + '" alt="' + altText + '"  style="min-height: 400px;"/>';
+            $(this).parent().append(imgHtm);
+            $(this).parent().addClass("doubleImagesLoad");
+            $(this).parent().removeClass("single_slide");
+            $(this).remove();
+        });
+        // $(".single_slide").each(function(){
+        //     $(this).addClass("doubleImagesLoad");
+        // });
+        let count = 0;
+        let htm_temp = "";
+        $(".doubleImagesLoad").each(function() {
+            // $(this).addClass("doubleImages");
+            htm_temp += "<div class=\"slideEachImage\">" + $(this).html() + "</div>";
+            count++;
+            if (count > 1) {
+                $(this).parent().append(`<div class="single_slide">${htm_temp}</div>`);
+                count = 0;
+                htm_temp = "";
+            }
+            $(this).remove();
+        });
+        if (count === 1) {
+            $(".main_slider.owl-carousel").append(`<div class="single_slide">${htm_temp}</div>`);
+        }
+        $(".main_slider").length > 0 && $(".main_slider").owlCarousel({
+            items: 1,
+            autoplay: !0,
+            autoplayHoverPause: !0,   // ← pauses on mouse hover
+            dots: !1,
+            margin: 10,
+            nav: !0,
+            loop: !0,
+            responsive: {
+                600: {
+                    items: 1
+                },
+                1100: {
+                    items: 1
+                }
+            }
+        });
+    }
+</script>
+<script>
+    window.onload = function() {
+        loadSliderImages();
+        onloadFunctions();
+        checkAutoLoadOnpage();
+    };
+</script>
+<script>
+    function loadContentAgain() {
+        console.log("onpopstate", "loadContentAgain");
+        lastLink = window.location + '';
+        if (lastLink.indexOf("#") < 0) {
+            loadOnpage(window.location, document.title);
+        }
+    }
+    window.onpopstate = function() {
+        console.log("onpopstate", "onpopstate");
+        loadContentAgain();
+    }
+</script>
+<!--thebody_end--></body>
+</html>
